@@ -36,4 +36,8 @@ class User < ActiveRecord::Base
   end
   #above 15 lines add L7.9.3 for model method
 
+  #below 3lines add L7.10.1
+  def feed_items
+    Micropost.where(user_id: following_user_ids + [self.id])
+  end
 end

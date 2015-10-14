@@ -8,7 +8,11 @@
         <%= render 'shared/micropost_form' %>
       </section>
     </aside>
-  </div>
+    <div class="col-md-8"> <!-- #below 4 lines add L7.10.3 -->
+      <h3>Micropost Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+   </div> <!-- #above 4lines add L7.10.3   -->
 <% else %>
   <div class="center jumbotron">
     <h1>Welcome to the Microposts</h1>
