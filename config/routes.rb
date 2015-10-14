@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts #add L7.8.2
+  resources :relationships, only: [:create, :destroy]  #add L7.9.4
 end

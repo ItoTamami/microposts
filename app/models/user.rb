@@ -7,4 +7,33 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_secure_password
   has_many :microposts #add L7.8.2
+  #below 4 lines add L7.9.2 for get followed_id
+  has_many :following_relationships, class_name:  "Relationship",
+                                     foreign_key: "follower_id",
+                                     dependent:   :destroy
+  has_many :following_users, through: :following_relationships, source: :followed 
+
+  #below 4 lines add L7.9.2 for get follower
+  has_many :follower_relationships, class_name:  "Relationship",
+                                    foreign_key: "followed_id",
+                                    dependent:   :destroy
+  has_many :follower_users, through: :follower_relationships, source: :follower
+
+  #below 15 lines add L7.9.3 for model method
+  # 他のユーザーをフォローする
+  def follow(other_user)
+    following_relationships.create(followed_id: other_user.id)
+  end
+
+  # フォローしているユーザーをアンフォローする
+  def unfollow(other_user)
+    following_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  # あるユーザーをフォローしているかどうか？
+  def following?(other_user)
+    following_users.include?(other_user)
+  end
+  #above 15 lines add L7.9.3 for model method
+
 end
