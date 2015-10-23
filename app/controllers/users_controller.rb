@@ -4,6 +4,9 @@ class UsersController < ApplicationController
    @user = User.find(params[:id])
    @microposts = @user.microposts #add L7.8.5
   end
+ # def show
+ #   @user = User.find(params[:id])
+ # end
   
   def new
 	@user = User.new
@@ -19,11 +22,29 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+ # Added the above lines  L7.6.5
+
+ # Added the below lines  L7.7.task1
+  def edit
+	@user=User.find(params[:id])
+  end
+
+  def update
+      @user=User.find(params[:id])
+    if @user.update(user_params)
+        flash[:success] =  "Updated your profile!"
+	redirect_to edit_user_path(@user) 
+    else
+      render 'edit'
+    end
+    
+  end
+ # Added the above lines  L7.7.task1
 
   private
 
   def user_params
     params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
+                                 :password_confirmation,:profile,:area)
   end
 end
