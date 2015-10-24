@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       @user=User.find(params[:id])
     if @user.update(user_params)
         flash[:success] =  "Updated your profile!"
-	redirect_to edit_user_path(@user) 
+	redirect_to @user
     else
       render 'edit'
     end
