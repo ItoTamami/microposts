@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
+  validates :area,  length: { maximum: 50 }
+  validates :profile,  length: { maximum: 300 }
   has_secure_password
   has_many :microposts #add L7.8.2
   #below 4 lines add L7.9.2 for get followed_id
