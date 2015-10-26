@@ -4,6 +4,8 @@
       <h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
+       <div> <a href="<%= followings_user_path(@user) %>" >Followings</a></div>
+       <div> <a href="<%= followers_user_path(@user) %>" >Followers</a></div>
       </h1>
     </section>
   </aside>
