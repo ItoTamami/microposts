@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
 
   resources :users do
-　  member do
-　 　get 'followings'
-　 　get 'followers'
-　  end
+    member do
+     get 'followings'
+     get 'followers'
+   end
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts #add L7.8.2

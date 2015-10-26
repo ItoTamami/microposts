@@ -1,3 +1,6 @@
 <h1>FOLLOWING</h1>
 <div>I am subscribing to their Tweets as a follower. </div>
 <div>フォローしているユーザー一覧 </div>
+<% @users.each do |user| %>
+  <%= user.name %>
+<% end %>
