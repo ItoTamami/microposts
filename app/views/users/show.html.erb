@@ -6,6 +6,9 @@
       <div>Name: <%= @user.name %></div>
       <div>Area: <%= @user.area %></div>
       <div>Profile: <%= @user.profile %></div>
+      </div>
+	<br />
+      <div>
        <div> <a href="<%= followings_user_path(@user) %>" >Followings</a></div>
        <div> <a href="<%= followers_user_path(@user) %>" >Followers</a></div>
       </div>
