@@ -1,0 +1,13 @@
+<h1>FOLLOWERS</h1>
+<div>Followers are people who receive your Tweets. </div>
+<div>フォローされているユーザーの一覧</div>
+<ul>
+<% @users.each do |user| %>
+<li><div> 
+  <div><%= gravatar_for user,:size => 50 %></div>
+  <div><%= user.name %></div>
+  <div><%= user.area%></div>
+  <div><%= user.profile %></div>
+</div></li>
+<% end %>
+</ul>
